@@ -1178,22 +1178,16 @@
             const formData = new FormData(form);
             const changedData = {};
 
+            const collected = {};
             for (let [key, value] of formData.entries()) {
-                const initial = initialFormState[key];
+                if (!collected[key]) collected[key] = [];
+                collected[key].push(value);
+            }
 
-                const hasChanged = Array.isArray(initial)
-                    ? !initial.includes(value)
-                    : initial !== value;
-
-                if (hasChanged) {
-                    if (changedData[key]) {
-                        if (!Array.isArray(changedData[key])) {
-                            changedData[key] = [changedData[key]];
-                        }
-                        changedData[key].push(value);
-                    } else {
-                        changedData[key] = value;
-                    }
+            for (const [key, newValues] of Object.entries(collected)) {
+                const original = Array.isArray(initialFormState[key]) ? initialFormState[key] : [initialFormState[key]];
+                if (JSON.stringify(original) !== JSON.stringify(newValues)) {
+                    changedData[key] = newValues.length === 1 ? newValues[0] : newValues;
                 }
             }
 
