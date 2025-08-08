@@ -50,7 +50,7 @@
         memberList.innerHTML = members.map(name => `<li><a href="#">${name}</a></li>`).join("");
 
         // Fill duties section
-        document.getElementById("dutiesSection").innerHTML = data.iso_duties || "";
+        document.getElementById("dutiesSection").innerHTML = data.sso_duties || "";
       })
       .catch(err => {
         console.error("Error loading SSO data:", err);
