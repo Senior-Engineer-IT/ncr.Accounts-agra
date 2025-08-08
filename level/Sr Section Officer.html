@@ -45,7 +45,7 @@
         document.getElementById("menOnRoll").textContent = data.sso_men_on_roll || "";
 
         // Fill members list
-        const members = data.iso_members || [];
+        const members = data.sso_members || [];
         const memberList = document.getElementById("memberList");
         memberList.innerHTML = members.map(name => `<li><a href="#">${name}</a></li>`).join("");
 
