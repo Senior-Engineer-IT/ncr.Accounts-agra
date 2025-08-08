@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SR.ISO</title>
+  <title>Sr Section Officer</title>
   <link rel="stylesheet" href="SO CSS.css" />
 </head>
 
 <body>
   <div class="container">
-    <h1>SR.ISO</h1>
+    <h1>Sr. Section Officer</h1>
     <h2>General Duties and Members</h2>
 
     <div class="grid">
@@ -41,8 +41,8 @@
       .then(res => res.json())
       .then(({ data }) => {
         // Fill sanctioned and roll values
-        document.getElementById("sanctioned").textContent = data.iso_sanctioned_strength || "";
-        document.getElementById("menOnRoll").textContent = data.iso_men_on_roll || "";
+        document.getElementById("sanctioned").textContent = data.sso_sanctioned_strength || "";
+        document.getElementById("menOnRoll").textContent = data.sso_men_on_roll || "";
 
         // Fill members list
         const members = data.iso_members || [];
